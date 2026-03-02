@@ -1,6 +1,8 @@
-# PPO with Curriculum Learning for Chef's Hat (Variant 2)
+PPO with Reward Shaping for Chef's Hat (Sparse Reward Variant)
 
-**Student ID:** 16779086
+Assigned Variant: Sparse / Delayed Reward Variant  
+Student ID: 16779086  
+ID mod 7 = 3
 
 ## 1. Overview
 
