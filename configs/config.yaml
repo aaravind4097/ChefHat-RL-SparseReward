@@ -1,0 +1,38 @@
+_# --- General PPO Hyperparameters ---
+learning_rate: 0.0003
+gamma: 0.99
+gae_lambda: 0.95
+clip_epsilon: 0.2
+ppo_epochs: 10
+batch_size: 64
+entropy_coef: 0.01
+
+# --- Experiment Settings ---
+seed: 2024
+total_training_matches: 2000 # Max matches, curriculum may finish earlier
+
+# --- Curriculum Learning (Variant 2) ---
+# Define the stages of the curriculum. The agent will progress to the next
+# stage once it achieves the `win_rate_threshold` against the current opponents.
+curriculum_stages:
+  - name: "Stage 1: vs. Random"
+    opponents: ["RandomAgent", "RandomAgent", "RandomAgent"]
+    win_rate_threshold: 0.60 # Achieve 60% win rate to pass
+    matches_per_eval: 100 # Check win rate every 100 matches
+
+  - name: "Stage 2: vs. Heuristic V1"
+    opponents: ["HeuristicAgentV1", "HeuristicAgentV1", "HeuristicAgentV1"]
+    win_rate_threshold: 0.50 # Achieve 50% win rate to pass
+    matches_per_eval: 100
+
+  - name: "Stage 3: vs. Heuristic V2"
+    opponents: ["HeuristicAgentV2", "HeuristicAgentV2", "HeuristicAgentV2"]
+    win_rate_threshold: 0.40 # Final training stage
+    matches_per_eval: 100
+
+# --- Evaluation Settings ---
+eval_matches: 200
+opponents_to_eval:
+  - "RandomAgent"
+  - "HeuristicAgentV1"
+  - "HeuristicAgentV2"

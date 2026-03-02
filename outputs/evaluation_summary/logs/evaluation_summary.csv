@@ -1,0 +1,4 @@
+opponent,win_rate,avg_score,avg_position
+Random,0.63,2.1,1.6
+Heuristic V1,0.48,1.4,2.1
+Heuristic V2,0.41,0.9,2.4
